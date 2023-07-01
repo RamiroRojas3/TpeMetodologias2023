@@ -24,6 +24,15 @@ public class SistemaDeTransporte {
         return false;
     }
 
+    public boolean verificarContraseña(String contraseña){
+        for (Pasajero pasajero : pasajeros){
+            if (pasajero.getContraseña().equals(contraseña)){
+                return true;
+            }
+        }
+        return false;
+    }
+
     public String obtenerNombrePasajeroPorDNI(String dni) {
         for (Pasajero pasajero : pasajeros) {
             if (pasajero.getDNI().equals(dni)) {

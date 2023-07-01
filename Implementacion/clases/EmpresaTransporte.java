@@ -7,12 +7,15 @@ import java.util.List;
 import clases.Filtros.Filtro;
 
 public class EmpresaTransporte {
-    private String nombre;
     private List<ServicioTransporte> servicios;
 
-    public EmpresaTransporte(String nombre) {
-        this.nombre = nombre;
+    public EmpresaTransporte() {
         this.servicios = new ArrayList<>();
+    }
+
+    public EmpresaTransporte(List<ServicioTransporte> servicios){
+        this.servicios=new ArrayList<>();
+        this.servicios.addAll(servicios);
     }
 
     public void agregarServicio(ServicioTransporte servicio) {
@@ -46,11 +49,32 @@ public class EmpresaTransporte {
     public List<ServicioTransporte> devolverPromosSuscripcion(Pasajero p){
         List<ServicioTransporte> serviciosPromocion = new ArrayList<>();
         for (ServicioTransporte servicio : servicios){
-            if((p.isEstaSuscripto())&& (servicio.getAsientosDisponibles()>20)&&(servicio.getOrigen()==p.getOrigenSuscripcion())&&(servicio.getDestino()==p.getDestinoSuscripcion())){
+            if((p.isEstaSuscripto())&& (servicio.getAsientosDisponibles()>20)){
                 serviciosPromocion.add(servicio);
             }
         }
         return serviciosPromocion;
+    }
+
+
+
+    public void devolverLista(){
+        if (this.servicios.size()==0){
+            System.out.println("No se encontraron transportes");
+        }
+        for (ServicioTransporte s:servicios)
+        {
+            System.out.println(s);
+        }
+    }
+
+    public double generarEstadisticas(){
+        int cantidadServicios=this.servicios.size();
+        int duracionServicios=0;
+        for (ServicioTransporte s : servicios) {
+            duracionServicios+=s.getTiempoDeViaje();
+        }
+        return (duracionServicios/cantidadServicios);
     }
     
 }

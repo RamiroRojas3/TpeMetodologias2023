@@ -1,26 +1,31 @@
-package clases.Filtros;
-import java.time.LocalTime;
-import java.util.ArrayList;
-import java.util.List;
-import clases.ServicioTransporte;
+ package clases.Filtros;
+ import java.time.LocalTime;
+ import java.util.ArrayList;
+ import java.util.List;
+ import clases.ServicioTransporte;
 
-public class FiltroHora implements Filtro {
-    private LocalTime horaSalidaMin;
-    private LocalTime horaSalidaMax;
+ public class FiltroHora implements Filtro {
+     private LocalTime horaSalidaMin;
+     private LocalTime horaSalidaMax;
+     private LocalTime horaLlegadaMin;
+     private LocalTime horaLlegadaMax;
 
-    public FiltroHora(LocalTime horaSalidaMin, LocalTime horaSalidaMax) {
-        this.horaSalidaMin = horaSalidaMin;
-        this.horaSalidaMax = horaSalidaMax;
-    }
+     public FiltroHora(LocalTime horaSalidaMin, LocalTime horaSalidaMax, LocalTime horaLlegadaMin, LocalTime horaLlegadaMax) {
+         this.horaSalidaMin = horaSalidaMin;
+         this.horaSalidaMax = horaSalidaMax;
+         this.horaLlegadaMin = horaLlegadaMin;
+         this.horaLlegadaMax = horaLlegadaMax;
+     }
 
-    @Override
-    public List<ServicioTransporte> filtrar(List<ServicioTransporte> servicios) {
-        List<ServicioTransporte> serviciosFiltrados = new ArrayList<>();
-        for (ServicioTransporte servicio : servicios) {
-            if ((servicio.getHoraSalida().getHour()>=horaSalidaMin.getHour())&&(servicio.getHoraLlegada().getHour()<=horaSalidaMax.getHour())) {
-                serviciosFiltrados.add(servicio);
-            }
+     @Override
+
+     public boolean cumpleFiltro(ServicioTransporte servicio){
+        if ((((servicio.getHoraSalida().getHour()>= horaSalidaMin.getHour())&&(servicio.getHoraSalida().getHour()<=horaLlegadaMax.getHour())))&&(((servicio.getHoraSalida().getHour()>= horaSalidaMin.getHour())&&(servicio.getHoraSalida().getHour()<=horaLlegadaMax.getHour())))){
+            return true;
         }
-        return serviciosFiltrados;
+        else{
+            return false;
+        }
+     }
+
     }
-}

@@ -25,6 +25,10 @@ public class TarjetaCredito {
     }
 
     public TarjetaCredito() {
+        this.numeroTarjeta="";
+        this.marcaTarjeta="";
+        this.bancoEmisor="";
+
     }
 
 

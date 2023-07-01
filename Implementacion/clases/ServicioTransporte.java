@@ -15,9 +15,9 @@ public class ServicioTransporte {
 
     
 
-    public ServicioTransporte(String empresa, String origen, String destino, LocalDate fechaViaje, LocalTime horaSalida,
+    public ServicioTransporte(String empresa,String origen, String destino, LocalDate fechaViaje, LocalTime horaSalida,
             LocalTime horaLlegada, double costo, int asientosDisponibles) {
-        this.empresa = empresa;
+        this.empresa=empresa;
         this.origen = origen;
         this.destino = destino;
         this.fechaViaje = fechaViaje;
@@ -26,11 +26,7 @@ public class ServicioTransporte {
         this.costo = costo;
         this.asientosDisponibles = asientosDisponibles;
     }
-
-    public String getEmpresa() {
-        return empresa;
-    }
-
+    
     
     public LocalTime getHoraSalida() {
         return horaSalida;
@@ -46,10 +42,6 @@ public class ServicioTransporte {
 
     public void setHoraLlegada(LocalTime horaLlegada) {
         this.horaLlegada = horaLlegada;
-    }
-
-    public void setEmpresa(String empresa) {
-        this.empresa = empresa;
     }
 
     public String getOrigen() {
@@ -91,4 +83,27 @@ public class ServicioTransporte {
     public void setAsientosDisponibles(int asientosDisponibles) {
         this.asientosDisponibles = asientosDisponibles;
     }
+
+
+    @Override
+    public String toString() {
+        return "ServicioTransporte [empresa=" + empresa + ", origen=" + origen + ", destino=" + destino
+                + ", fechaViaje=" + fechaViaje + ", horaSalida=" + horaSalida + ", horaLlegada=" + horaLlegada
+                + ", costo=" + costo + ", asientosDisponibles=" + asientosDisponibles + "]";
+    }
+
+
+    public String getEmpresa() {
+        return empresa;
+    }
+    
+    public int getTiempoDeViaje(){
+        if(this.horaSalida.getHour()>this.horaLlegada.getHour()){
+            return(horaLlegada.getHour()+(24-horaSalida.getHour()));
+        }
+        else{
+            return horaLlegada.getHour()-horaSalida.getHour();
+        }
+    }
+    
 }

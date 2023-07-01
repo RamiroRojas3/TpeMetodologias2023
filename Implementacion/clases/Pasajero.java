@@ -14,7 +14,7 @@ public class Pasajero {
     private boolean estaSuscripto;
     private String origenSuscripcion;
     private String destinoSuscripcion;
-
+    private int descuento;
     
     public Pasajero(String nombre, String apellido, String DNI, String contraseña, TarjetaCredito tarjetaCredito) {
         this.nombre = nombre;
@@ -23,6 +23,7 @@ public class Pasajero {
         this.contraseña = contraseña;
         this.tarjetaCredito = tarjetaCredito;
         this.estaSuscripto = false;
+        this.descuento=0;
     }
 
     public Pasajero(){
@@ -57,6 +58,12 @@ public class Pasajero {
     }
     public String getDNI() {
         return DNI;
+    }
+    public String getContraseña(){
+        return contraseña;
+    }
+    public void aniadirDescuento(){
+        this.descuento+=10;
     }
 
     @Override
@@ -192,5 +199,7 @@ public class Pasajero {
     this.destinoSuscripcion= scanner.nextLine();
     this.estaSuscripto=true;
   }
+
+  
 
 }

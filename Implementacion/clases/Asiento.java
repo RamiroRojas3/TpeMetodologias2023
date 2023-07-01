@@ -25,8 +25,8 @@ public class Asiento {
     }
 
 
-    public void setDniPasajero(String dniPasajero) {
-        this.dniPasajero = dniPasajero;
+    public void setDniPasajero(String dNI) {
+        this.dniPasajero = dNI;
     }
 
     
